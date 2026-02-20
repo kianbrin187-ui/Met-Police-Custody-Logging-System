@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ERLC Custody Booking Form</title>
+  <title>Metropolitan Police Custody Arrest Log</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,9 +14,16 @@
       <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6a/Metropolitan_Police_Service_logo.svg/1200px-Metropolitan_Police_Service_logo.svg.png" alt="Met Police Logo">
     </div>
 
-    <h2 id="formTitle">Arrest (#)</h2>
+    <h2 id="formTitle">Metropolitan Police Custody Arrest Log</h2>
 
     <form id="bookingForm">
+
+      <!-- Custody Officer -->
+      <label>Custody Officer Name:</label>
+      <input type="text" id="custodyOfficer" placeholder="Enter custody officer name">
+
+      <label>Custody Officer Callsign:</label>
+      <input type="text" id="custodyCallsign" placeholder="Enter custody officer callsign">
 
       <!-- Arresting Officers -->
       <label>All Arresting Officers + Callsigns:</label>
@@ -88,10 +95,14 @@
       <label>Have You Taken Any Medication Recently?</label>
       <textarea id="recentMedication" rows="2"></textarea>
 
+      <!-- Buttons -->
       <button type="submit">Save Booking</button>
       <button type="button" onclick="openArrests()">View All Arrests</button>
 
     </form>
+
+    <!-- Credits -->
+    <p class="credits">Credits: C. Bradford (piggyanddo)</p>
   </div>
 
   <script src="script.js"></script>
