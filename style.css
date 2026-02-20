@@ -1,177 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>ERLC Custody Booking Form</title>
-  <style>
-    /* Light navy background */
-    body {
-      font-family: sans-serif;
-      background-color: #2C3E5B; /* light navy */
-      color: #1D1E48; /* navy text */
-      padding: 20px;
-      margin: 0;
-    }
+body {
+  font-family: sans-serif;
+  background-color: #2C3E5B; /* light navy */
+  color: #1D1E48;
+  margin: 0;
+  padding: 20px;
+}
 
-    /* Centered form container */
-    .form-container {
-      background-color: #ffffff;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 25px 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      border-top: 8px solid #00AEEF; /* light blue top bar */
-    }
+.form-card {
+  background-color: #ffffff;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-top: 8px solid #00AEEF; /* light blue top */
+}
 
-    /* Logo placeholder */
-    .logo {
-      display: block;
-      width: 120px;
-      height: 80px;
-      margin: 0 auto 20px;
-      background-color: #00AEEF;
-      border-radius: 6px;
-      text-align: center;
-      line-height: 80px;
-      font-weight: bold;
-      color: #ffffff;
-      font-family: sans-serif;
-    }
+.logo {
+  display: block;
+  width: 120px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background-color: #00AEEF;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 80px;
+  font-weight: bold;
+  color: #fff;
+}
 
-    h1 {
-      text-align: center;
-      color: #1D1E48;
-      margin-bottom: 25px;
-    }
+h2 {
+  text-align: center;
+  color: #1D1E48;
+  margin-bottom: 20px;
+}
 
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
+h3 {
+  color: #00AEEF;
+  margin-top: 25px;
+}
 
-    input, select, textarea, button {
-      margin-top: 5px;
-      padding: 8px;
-      width: 100%;
-      border: 2px solid #00AEEF;
-      border-radius: 4px;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
 
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: #1D1E48;
-      box-shadow: 0 0 5px #00AEEF;
-    }
+input, select, textarea, button {
+  margin-top: 5px;
+  padding: 8px;
+  width: 100%;
+  border: 2px solid #00AEEF;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
 
-    button {
-      background-color: #1D1E48;
-      color: #FFFFFF;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 20px;
-    }
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #1D1E48;
+  box-shadow: 0 0 5px #00AEEF;
+}
 
-    button:hover {
-      background-color: #00AEEF;
-      color: #1D1E48;
-    }
+button {
+  background-color: #1D1E48;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+}
 
-    #selectedOfficers li {
-      margin: 3px 0;
-      padding: 5px;
-      background-color: #00AEEF;
-      color: #FFFFFF;
-      border-radius: 3px;
-      list-style: none;
-    }
+button:hover {
+  background-color: #00AEEF;
+  color: #1D1E48;
+}
 
-    .inline-options {
-      display: flex;
-      gap: 20px;
-      margin-top: 5px;
-    }
-
-  </style>
-</head>
-<body>
-
-  <div class="form-container">
-
-    <!-- Logo placeholder -->
-    <div class="logo">LOGO</div>
-
-    <h1>ERLC Custody Booking Form</h1>
-
-    <form id="bookingForm">
-
-      <label>Arresting Officers (Search or type, then Add):</label>
-      <input type="text" id="officerSearch" placeholder="Search or type officer...">
-      <button type="button" id="addOfficer">Add Officer</button>
-      <ul id="selectedOfficers"></ul>
-
-      <label>Suspect Full Name:</label>
-      <input type="text" id="suspectName">
-
-      <label>Reason for Arrest:</label>
-      <textarea id="reason" rows="2"></textarea>
-
-      <label>Location of Arrest:</label>
-      <input type="text" id="location">
-
-      <label>Time of Arrest:</label>
-      <input type="datetime-local" id="time">
-
-      <label>Suspect Caution Read?</label>
-      <div class="inline-options">
-        <label><input type="radio" name="cautionRead" value="Yes"> Yes</label>
-        <label><input type="radio" name="cautionRead" value="No"> No</label>
-      </div>
-
-      <label>Suspect Searched?</label>
-      <div class="inline-options">
-        <label><input type="radio" name="searched" value="Yes"> Yes</label>
-        <label><input type="radio" name="searched" value="No"> No</label>
-      </div>
-
-      <label>Items Found:</label>
-      <textarea id="itemsFound" rows="2"></textarea>
-
-      <label>Force Used:</label>
-      <textarea id="forceUsed" rows="2"></textarea>
-
-      <label>Additional Info:</label>
-      <textarea id="additionalInfo" rows="3"></textarea>
-
-      <button type="submit">Save Booking</button>
-    </form>
-  </div>
-
-  <script>
-    // JS to add officers to the list
-    const addOfficerBtn = document.getElementById('addOfficer');
-    const officerSearch = document.getElementById('officerSearch');
-    const selectedOfficers = document.getElementById('selectedOfficers');
-
-    addOfficerBtn.addEventListener('click', () => {
-      const name = officerSearch.value.trim();
-      if (name) {
-        const li = document.createElement('li');
-        li.textContent = name;
-        selectedOfficers.appendChild(li);
-        officerSearch.value = '';
-      }
-    });
-
-    // Prevent form submission for demo
-    document.getElementById('bookingForm').addEventListener('submit', e => {
-      e.preventDefault();
-      alert('Booking saved (demo)');
-    });
-  </script>
-
-</body>
-</html>
+#selectedOfficers li {
+  margin: 3px 0;
+  padding: 5px;
+  background-color: #00AEEF;
+  color: #fff;
+  border-radius: 3px;
+  list-style: none;
+}
