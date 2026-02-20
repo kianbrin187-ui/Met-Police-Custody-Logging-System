@@ -1,66 +1,36 @@
-let officersDatabase = [];
-let selectedOfficers = [];
+const officerInput = document.getElementById('officerSearch');
+const selectedOfficers = document.getElementById('selectedOfficers');
+let officersList = [];
 
-fetch("https://script.google.com/macros/s/AKfycbwLNWHGGRaBJL79vrDwZ_vflEjJgdIPq41hxT-V4P4K-Bru3pX5H_E-pzXHs0U6z144/exec?type=officers")
-  .then(r => r.json())
-  .then(data => officersDatabase = data);
-
-function addOfficer() {
-  const input = document.getElementById("officerSearch").value.trim();
-  if(!input) return;
-  const officer = officersDatabase.find(o => o.display.toLowerCase() === input.toLowerCase());
-  const display = officer ? officer.display : input;
-  if(!selectedOfficers.includes(display)) selectedOfficers.push(display);
-  updateSelectedList();
-  document.getElementById("officerSearch").value = "";
-}
-
-function updateSelectedList() {
-  const ul = document.getElementById("selectedOfficers");
-  ul.innerHTML = "";
-  selectedOfficers.forEach(off => {
-    const li = document.createElement("li");
-    li.textContent = off;
-    ul.appendChild(li);
-  });
-}
-
-function getSelectedOfficers() {
-  return selectedOfficers.join("\n");
-}
-
-function saveBooking() {
-  const data = {
-    officers: getSelectedOfficers(),
-    suspect: document.getElementById("suspectName").value,
-    reason: document.getElementById("reason").value,
-    location: document.getElementById("location").value,
-    time: document.getElementById("timeOfArrest").value,
-    caution: document.getElementById("cautionRead").value,
-    search: document.getElementById("searched").value,
-    items: document.getElementById("items").value,
-    force: document.getElementById("forceUsed").value,
-    additional: document.getElementById("additional").value
-  };
-
-  fetch("https://script.google.com/macros/s/AKfycbwLNWHGGRaBJL79vrDwZ_vflEjJgdIPq41hxT-V4P4K-Bru3pX5H_E-pzXHs0U6z144/exec", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
+// Fetch officers from Google Script
+fetch('https://script.google.com/macros/s/AKfycbwLNWHGGRaBJL79vrDwZ_vflEjJgdIPq41hxT-V4P4K-Bru3pX5H_E-pzXHs0U6z144/exec?type=officers')
+  .then(response => response.json())
+  .then(data => {
+    officersList = data; // assuming data is an array of officer names or objects with names
+    console.log('Officers loaded:', officersList);
   })
-  .then(r => r.json())
-  .then(res => {
-    alert("Booking saved as " + res.arrestNumber);
-    selectedOfficers = [];
-    updateSelectedList();
-    document.getElementById("suspectName").value = "";
-    document.getElementById("reason").value = "";
-    document.getElementById("location").value = "";
-    document.getElementById("timeOfArrest").value = "";
-    document.getElementById("cautionRead").value = "Yes";
-    document.getElementById("searched").value = "Yes";
-    document.getElementById("items").value = "";
-    document.getElementById("forceUsed").value = "";
-    document.getElementById("additional").value = "";
-  });
+  .catch(err => console.error('Error fetching officers:', err));
+
+// Function to add selected officer to the list
+function addOfficer() {
+  const officerName = officerInput.value.trim();
+  if (!officerName) return;
+
+  const li = document.createElement('li');
+  li.textContent = officerName;
+  selectedOfficers.appendChild(li);
+  officerInput.value = '';
 }
+
+// Optional: Simple autocomplete for officer search
+officerInput.addEventListener('input', function() {
+  const value = this.value.toLowerCase();
+  const match = officersList.find(officer => officer.toLowerCase().includes(value));
+  if (match) this.value = match; // you can improve this with a dropdown
+});
+
+// Prevent default form submission for demo
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Booking saved (demo)');
+});
