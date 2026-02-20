@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ERLC Custody Booking Form</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h2>ERLC Custody Booking Form</h2>
+
+<label>Arresting Officers (Search or type, then Add):</label>
+<input type="text" id="officerSearch" placeholder="Search or type officer...">
+<button onclick="addOfficer()">Add Officer</button>
+<ul id="selectedOfficers"></ul>
+
+<label>Suspect Full Name:</label>
+<input type="text" id="suspectName">
+
+<label>Reason for Arrest:</label>
+<input type="text" id="reason">
+
+<label>Location of Arrest:</label>
+<input type="text" id="location">
+
+<label>Time of Arrest:</label>
+<input type="datetime-local" id="timeOfArrest">
+
+<label>Suspect Caution Read?</label>
+<select id="cautionRead">
+  <option value="Yes">Yes</option>
+  <option value="N/A">N/A</option>
+</select>
+
+<label>Suspect Searched?</label>
+<select id="searched">
+  <option value="Yes">Yes</option>
+  <option value="No (Section 32 PACE)">No</option>
+</select>
+
+<label>Items Found:</label>
+<textarea id="items"></textarea>
+
+<label>Force Used:</label>
+<input type="text" id="forceUsed">
+
+<label>Additional Info:</label>
+<textarea id="additional"></textarea>
+
+<button onclick="saveBooking()">Save Booking</button>
+
+<script src="script.js"></script>
+</body>
+</html>

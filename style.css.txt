@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input, select, textarea, button {
+  margin-top: 5px;
+  padding: 5px;
+  width: 300px;
+}
+
+#selectedOfficers li {
+  margin: 3px 0;
+}

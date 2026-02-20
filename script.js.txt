@@ -1,0 +1,66 @@
+let officersDatabase = [];
+let selectedOfficers = [];
+
+fetch("https://script.google.com/macros/s/AKfycbwLNWHGGRaBJL79vrDwZ_vflEjJgdIPq41hxT-V4P4K-Bru3pX5H_E-pzXHs0U6z144/exec?type=officers")
+  .then(r => r.json())
+  .then(data => officersDatabase = data);
+
+function addOfficer() {
+  const input = document.getElementById("officerSearch").value.trim();
+  if(!input) return;
+  const officer = officersDatabase.find(o => o.display.toLowerCase() === input.toLowerCase());
+  const display = officer ? officer.display : input;
+  if(!selectedOfficers.includes(display)) selectedOfficers.push(display);
+  updateSelectedList();
+  document.getElementById("officerSearch").value = "";
+}
+
+function updateSelectedList() {
+  const ul = document.getElementById("selectedOfficers");
+  ul.innerHTML = "";
+  selectedOfficers.forEach(off => {
+    const li = document.createElement("li");
+    li.textContent = off;
+    ul.appendChild(li);
+  });
+}
+
+function getSelectedOfficers() {
+  return selectedOfficers.join("\n");
+}
+
+function saveBooking() {
+  const data = {
+    officers: getSelectedOfficers(),
+    suspect: document.getElementById("suspectName").value,
+    reason: document.getElementById("reason").value,
+    location: document.getElementById("location").value,
+    time: document.getElementById("timeOfArrest").value,
+    caution: document.getElementById("cautionRead").value,
+    search: document.getElementById("searched").value,
+    items: document.getElementById("items").value,
+    force: document.getElementById("forceUsed").value,
+    additional: document.getElementById("additional").value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbwLNWHGGRaBJL79vrDwZ_vflEjJgdIPq41hxT-V4P4K-Bru3pX5H_E-pzXHs0U6z144/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(r => r.json())
+  .then(res => {
+    alert("Booking saved as " + res.arrestNumber);
+    selectedOfficers = [];
+    updateSelectedList();
+    document.getElementById("suspectName").value = "";
+    document.getElementById("reason").value = "";
+    document.getElementById("location").value = "";
+    document.getElementById("timeOfArrest").value = "";
+    document.getElementById("cautionRead").value = "Yes";
+    document.getElementById("searched").value = "Yes";
+    document.getElementById("items").value = "";
+    document.getElementById("forceUsed").value = "";
+    document.getElementById("additional").value = "";
+  });
+}
