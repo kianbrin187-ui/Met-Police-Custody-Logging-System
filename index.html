@@ -1,52 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>ERLC Custody Booking Form</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Arrest Form</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>ERLC Custody Booking Form</h2>
 
-<label>Arresting Officers (Search or type, then Add):</label>
-<input type="text" id="officerSearch" placeholder="Search or type officer...">
-<button onclick="addOfficer()">Add Officer</button>
-<ul id="selectedOfficers"></ul>
+  <div class="form-card">
 
-<label>Suspect Full Name:</label>
-<input type="text" id="suspectName">
+    <!-- Logo placeholder -->
+    <div class="logo">LOGO</div>
 
-<label>Reason for Arrest:</label>
-<input type="text" id="reason">
+    <h2 id="formTitle">Arrest (#)</h2>
 
-<label>Location of Arrest:</label>
-<input type="text" id="location">
+    <form id="bookingForm">
 
-<label>Time of Arrest:</label>
-<input type="datetime-local" id="timeOfArrest">
+      <!-- Arresting Officers -->
+      <label>All Arresting Officers + Callsigns:</label>
+      <input type="text" id="officerSearch" placeholder="Search or type officer...">
+      <button type="button" onclick="addOfficer()">Add Officer</button>
+      <ul id="selectedOfficers"></ul>
 
-<label>Suspect Caution Read?</label>
-<select id="cautionRead">
-  <option value="Yes">Yes</option>
-  <option value="N/A">N/A</option>
-</select>
+      <!-- Suspect Details -->
+      <label>Suspect’s Full Name:</label>
+      <input type="text" id="suspectName">
 
-<label>Suspect Searched?</label>
-<select id="searched">
-  <option value="Yes">Yes</option>
-  <option value="No (Section 32 PACE)">No</option>
-</select>
+      <label>Reason for Arrest:</label>
+      <textarea id="reason" rows="2"></textarea>
 
-<label>Items Found:</label>
-<textarea id="items"></textarea>
+      <label>Location of Arrest:</label>
+      <input type="text" id="location">
 
-<label>Force Used:</label>
-<input type="text" id="forceUsed">
+      <label>Time of Arrest:</label>
+      <input type="datetime-local" id="timeOfArrest">
 
-<label>Additional Info:</label>
-<textarea id="additional"></textarea>
+      <!-- Rights / Caution -->
+      <label>Has the Suspect Been Read the Caution/Rights?</label>
+      <select id="cautionRead">
+        <option value="Yes">Yes</option>
+        <option value="N/A">N/A</option>
+      </select>
 
-<button onclick="saveBooking()">Save Booking</button>
+      <!-- Search Info -->
+      <label>Has the Suspect Been Searched?</label>
+      <select id="searched">
+        <option value="Yes">Yes</option>
+        <option value="No (Section 32 PACE)">No (Section 32 PACE)</option>
+      </select>
 
-<script src="script.js"></script>
+      <label>What Items Were Found During the Search?</label>
+      <textarea id="itemsFound" rows="2"></textarea>
+
+      <label>What Force Was Used? (if applicable, e.g., Pava)</label>
+      <input type="text" id="forceUsed">
+
+      <label>Any Further Relevant Information</label>
+      <textarea id="additionalInfo" rows="3"></textarea>
+
+      <!-- Optional Roleplay Section -->
+      <h3>Additional Procedures (Roleplay)</h3>
+
+      <label>Any Allergies, Dietary Requirements, or Medical Conditions?</label>
+      <textarea id="allergies" rows="2"></textarea>
+
+      <label>Run Biometrics and Shoe Prints into PNC</label>
+      <select id="biometrics">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>Any Regular Medical Procedures or Medication?</label>
+      <textarea id="medication" rows="2"></textarea>
+
+      <label>Would You Like Anybody Alerting You Are Here?</label>
+      <select id="alerting">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>Do You Care for Anyone or Is Anyone Dependent on You? (Children, elderly, disabled, pets)</label>
+      <textarea id="dependents" rows="2"></textarea>
+
+      <label>Have You Taken Any Medication Recently?</label>
+      <textarea id="recentMedication" rows="2"></textarea>
+
+      <button type="submit">Save Booking</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
