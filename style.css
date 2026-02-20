@@ -1,45 +1,42 @@
+/* Dark navy background */
 body {
   font-family: sans-serif;
-  background-color: #2C3E5B; /* light navy */
+  background-color: #0B1B3F; /* dark navy */
   color: #1D1E48;
   margin: 0;
   padding: 20px;
 }
 
+/* Form card */
 .form-card {
   background-color: #ffffff;
-  max-width: 700px;
+  max-width: 750px;
   margin: 30px auto;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-top: 8px solid #00AEEF;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
-.logo {
+/* Logo styling */
+.logo img {
   display: block;
-  width: 120px;
-  height: 80px;
+  width: 150px;
   margin: 0 auto 20px;
-  background-color: #00AEEF;
-  border-radius: 6px;
-  text-align: center;
-  line-height: 80px;
-  font-weight: bold;
-  color: #fff;
 }
 
+/* Headers */
 h2 {
   text-align: center;
-  color: #1D1E48;
+  color: #0B1B3F; /* navy text */
   margin-bottom: 20px;
 }
 
 h3 {
-  color: #00AEEF;
+  color: #005CAB; /* Met Police blue */
   margin-top: 25px;
 }
 
+/* Labels and inputs */
 label {
   display: block;
   margin-top: 15px;
@@ -50,36 +47,40 @@ input, select, textarea, button {
   margin-top: 5px;
   padding: 8px;
   width: 100%;
-  border: 2px solid #00AEEF;
+  border: 2px solid #005CAB;
   border-radius: 4px;
   font-size: 14px;
   box-sizing: border-box;
+  color: #0B1B3F;
 }
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: #1D1E48;
-  box-shadow: 0 0 5px #00AEEF;
+  border-color: #0B1B3F;
+  box-shadow: 0 0 5px #005CAB;
 }
 
+/* Buttons */
 button {
-  background-color: #1D1E48;
-  color: #fff;
+  background-color: #0B1B3F; /* navy */
+  color: #ffffff;
   cursor: pointer;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 15px;
+  transition: 0.3s;
 }
 
 button:hover {
-  background-color: #00AEEF;
-  color: #1D1E48;
+  background-color: #005CAB; /* Met Police blue hover */
+  color: #ffffff;
 }
 
+/* Selected officers list */
 #selectedOfficers li {
   margin: 3px 0;
   padding: 5px;
-  background-color: #00AEEF;
-  color: #fff;
+  background-color: #005CAB;
+  color: #ffffff;
   border-radius: 3px;
   list-style: none;
 }
@@ -89,13 +90,13 @@ button:hover {
   list-style: none;
   padding: 0;
   margin: 0;
-  border: 1px solid #00AEEF;
+  border: 1px solid #005CAB;
   border-radius: 4px;
   max-height: 120px;
   overflow-y: auto;
   position: absolute;
   width: calc(100% - 20px);
-  background: #fff;
+  background: #ffffff;
   z-index: 1000;
 }
 
@@ -105,6 +106,14 @@ button:hover {
 }
 
 .suggestions li:hover {
-  background-color: #00AEEF;
-  color: #fff;
+  background-color: #005CAB;
+  color: #ffffff;
+}
+
+/* Credits */
+.credits {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #0B1B3F;
 }
