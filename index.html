@@ -1,96 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Metropolitan Police Custody Arrest Log</title>
+<meta charset="UTF-8">
+<title>Metropolitan Police Custody System</title>
 
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0B1B3F;
+}
 
-  <!-- Select2 -->
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+/* TOP BAR */
+.topbar {
+  background:#0B1B3F;
+  padding:15px;
+  color:white;
+  font-size:18px;
+  font-weight:bold;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-  <link rel="stylesheet" href="style.css">
+.link-btn {
+  background:#005CAB;
+  color:white;
+  padding:8px 14px;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.link-btn:hover {
+  background:white;
+  color:#0B1B3F;
+}
+
+/* MAIN CONTAINER */
+.container {
+  background:white;
+  max-width:750px;
+  margin:40px auto;
+  padding:30px;
+  border-radius:8px;
+  box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+input, textarea, button {
+  width:100%;
+  padding:8px;
+  margin-top:12px;
+  border:2px solid #005CAB;
+  border-radius:4px;
+  font-size:14px;
+}
+
+button {
+  background:#0B1B3F;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover {
+  background:#005CAB;
+}
+
+.hidden {
+  display:none;
+}
+</style>
 </head>
 <body>
 
-  <div class="form-card">
+<div class="topbar">
+  Metropolitan Police Custody System
+  <button class="link-btn" onclick="openLinks()">Useful Links</button>
+</div>
 
-    <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Metropolitan_Police_Service_crest.png" alt="Met Police Logo">
-    </div>
+<!-- LOGIN BOX -->
+<div class="container" id="loginBox">
+  <h3>Secure Login</h3>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
 
-    <h2>Metropolitan Police Custody Arrest Log</h2>
+<!-- BOOKING FORM -->
+<div class="container hidden" id="formBox">
 
-    <form id="bookingForm">
+  <h3>Custody Booking</h3>
 
-      <label>Custody Officer Name:</label>
-      <input type="text" id="custodyOfficer">
+  <input type="text" id="custodyOfficer" placeholder="Custody Officer">
+  <input type="text" id="callsign" placeholder="Callsign">
+  <input type="text" id="arrestingOfficers" placeholder="Arresting Officers (comma separated)">
+  <input type="text" id="suspect" placeholder="Suspect Name">
+  <textarea id="reason" placeholder="Reason for Arrest"></textarea>
+  <input type="text" id="location" placeholder="Location">
+  <input type="datetime-local" id="time">
 
-      <label>Custody Officer Callsign:</label>
-      <input type="text" id="custodyCallsign">
+  <button onclick="saveBooking()">Save Booking</button>
 
-      <label>All Arresting Officers + Callsigns:</label>
-      <select id="officerSelect" multiple="multiple" style="width:100%"></select>
+</div>
 
-      <label>Suspect’s Full Name:</label>
-      <input type="text" id="suspectName">
+<script>
 
-      <label>Reason for Arrest:</label>
-      <textarea id="reason"></textarea>
+const scriptURL = "PASTE_WEB_APP_URL_HERE";
 
-      <label>Location of Arrest:</label>
-      <input type="text" id="location">
+/* OPEN LINKTREE */
+function openLinks(){
+  window.open("https://linktr.ee/YOUR_LINKTREE_HERE", "_blank");
+}
 
-      <label>Time of Arrest:</label>
-      <input type="datetime-local" id="timeOfArrest">
+/* LOGIN */
+function login(){
+  fetch(scriptURL,{
+    method:"POST",
+    body:JSON.stringify({
+      type:"login",
+      username:username.value,
+      password:password.value
+    })
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    if(data.status==="success"){
+      loginBox.classList.add("hidden");
+      formBox.classList.remove("hidden");
+    } else {
+      alert("Access Denied");
+    }
+  });
+}
 
-      <label>Has the Suspect Been Read the Caution?</label>
-      <select id="cautionRead">
-        <option>Yes</option>
-        <option>N/A</option>
-      </select>
+/* SAVE BOOKING */
+function saveBooking(){
+  fetch(scriptURL,{
+    method:"POST",
+    body:JSON.stringify({
+      type:"save",
+      custodyOfficer:custodyOfficer.value,
+      callsign:callsign.value,
+      officers:[arrestingOfficers.value],
+      suspect:suspect.value,
+      reason:reason.value,
+      location:location.value,
+      time:time.value
+    })
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    if(data.status==="saved"){
+      alert("Booking Saved Successfully");
+    } else {
+      alert("Error Saving Booking");
+    }
+  });
+}
 
-      <label>Has the Suspect Been Searched?</label>
-      <select id="searched">
-        <option>Yes</option>
-        <option>No (Section 32 PACE)</option>
-      </select>
+</script>
 
-      <label>Items Found:</label>
-      <textarea id="itemsFound"></textarea>
-
-      <label>Force Used:</label>
-      <input type="text" id="forceUsed">
-
-      <label>Additional Information:</label>
-      <textarea id="additionalInfo"></textarea>
-
-      <button type="submit">Save Booking</button>
-      <button type="button" onclick="openArrests()">View All Arrests</button>
-
-    </form>
-
-    <p class="credits">Credits: C. Bradford (piggyanddo)</p>
-  </div>
-
-  <!-- LOGIN MODAL -->
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <h3>Authorised Access Required</h3>
-
-      <label>Username</label>
-      <input type="text" id="loginUsername">
-
-      <label>Password</label>
-      <input type="password" id="loginPassword">
-
-      <button onclick="checkLogin()">Login</button>
-      <button onclick="closeLogin()">Cancel</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
