@@ -2,162 +2,230 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Metropolitan Police Custody System</title>
+<title>Met Police Custody System</title>
 
 <style>
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:#0B1B3F;
+
+body{
+margin:0;
+font-family:Arial;
+background:#0B1B3F;
 }
 
-/* TOP BAR */
-.topbar {
-  background:#0B1B3F;
-  padding:15px;
-  color:white;
-  font-size:18px;
-  font-weight:bold;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.topbar{
+background:#0B1B3F;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
 }
 
-.link-btn {
-  background:#005CAB;
-  color:white;
-  padding:8px 14px;
-  border:none;
-  border-radius:4px;
-  cursor:pointer;
-  font-weight:bold;
+.container{
+background:white;
+max-width:800px;
+margin:40px auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
-.link-btn:hover {
-  background:white;
-  color:#0B1B3F;
+input,textarea,select,button{
+width:100%;
+padding:8px;
+margin-top:10px;
+border:2px solid #005CAB;
+border-radius:4px;
 }
 
-/* MAIN CONTAINER */
-.container {
-  background:white;
-  max-width:750px;
-  margin:40px auto;
-  padding:30px;
-  border-radius:8px;
-  box-shadow:0 0 20px rgba(0,0,0,0.3);
+button{
+background:#0B1B3F;
+color:white;
+font-weight:bold;
+cursor:pointer;
 }
 
-input, textarea, button {
-  width:100%;
-  padding:8px;
-  margin-top:12px;
-  border:2px solid #005CAB;
-  border-radius:4px;
-  font-size:14px;
-}
+.hidden{display:none;}
 
-button {
-  background:#0B1B3F;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-button:hover {
-  background:#005CAB;
-}
-
-.hidden {
-  display:none;
-}
 </style>
 </head>
+
 <body>
 
 <div class="topbar">
-  Metropolitan Police Custody System
-  <button class="link-btn" onclick="openLinks()">Useful Links</button>
+Metropolitan Police Custody System
+<div>
+<button onclick="openLinks()">Useful Links</button>
+<button onclick="viewReports()">View Reports</button>
+<button onclick="logout()">Logout</button>
+</div>
 </div>
 
-<!-- LOGIN BOX -->
 <div class="container" id="loginBox">
-  <h3>Secure Login</h3>
-  <input type="text" id="username" placeholder="Username">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Login</button>
+<h2>Login</h2>
+<input id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
 </div>
 
-<!-- BOOKING FORM -->
-<div class="container hidden" id="formBox">
+<div class="container hidden" id="app">
 
-  <h3>Custody Booking</h3>
+<h2>Custody Booking</h2>
 
-  <input type="text" id="custodyOfficer" placeholder="Custody Officer">
-  <input type="text" id="callsign" placeholder="Callsign">
-  <input type="text" id="arrestingOfficers" placeholder="Arresting Officers (comma separated)">
-  <input type="text" id="suspect" placeholder="Suspect Name">
-  <textarea id="reason" placeholder="Reason for Arrest"></textarea>
-  <input type="text" id="location" placeholder="Location">
-  <input type="datetime-local" id="time">
+<h3 id="arrestNumber"></h3>
 
-  <button onclick="saveBooking()">Save Booking</button>
+<input id="custodyOfficer" placeholder="Custody Officer">
+<input id="callsign" placeholder="Callsign">
+<input id="officers" placeholder="Arresting Officers">
+<input id="suspect" placeholder="Suspect Name">
+<textarea id="reason" placeholder="Reason"></textarea>
+<input id="location" placeholder="Location">
+
+<label>Time of Arrest</label>
+<input type="datetime-local" id="time">
+
+<label>Caution Read</label>
+<select id="caution">
+<option>Yes</option>
+<option>N/A</option>
+</select>
+
+<label>Search Status</label>
+<select id="searchStatus">
+<option>Already searched prior to arrival</option>
+<option>Search conducted under Section 32 of PACE</option>
+</select>
+
+<textarea id="items" placeholder="Items Found"></textarea>
+<input id="force" placeholder="Force Used">
+<textarea id="info" placeholder="Further Information"></textarea>
+
+<h3>Roleplay Procedures</h3>
+
+<textarea id="allergies" placeholder="Allergies / Medical Conditions"></textarea>
+<select id="biometrics">
+<option value="true">Biometrics Submitted</option>
+<option value="">Not Submitted</option>
+</select>
+
+<textarea id="medication" placeholder="Medication"></textarea>
+<textarea id="alerting" placeholder="Alert Anyone?"></textarea>
+<textarea id="dependents" placeholder="Dependents?"></textarea>
+<textarea id="recentMedication" placeholder="Recent Medication"></textarea>
+
+<button onclick="saveBooking()">Save Booking</button>
 
 </div>
 
 <script>
 
-const scriptURL = "PASTE_WEB_APP_URL_HERE";
-
-/* OPEN LINKTREE */
-function openLinks(){
-  window.open("https://linktr.ee/YOUR_LINKTREE_HERE", "_blank");
-}
+const scriptURL="PASTE_WEB_APP_URL_HERE";
 
 /* LOGIN */
 function login(){
-  fetch(scriptURL,{
-    method:"POST",
-    body:JSON.stringify({
-      type:"login",
-      username:username.value,
-      password:password.value
-    })
-  })
-  .then(r=>r.json())
-  .then(data=>{
-    if(data.status==="success"){
-      loginBox.classList.add("hidden");
-      formBox.classList.remove("hidden");
-    } else {
-      alert("Access Denied");
-    }
-  });
+
+fetch(scriptURL,{
+method:"POST",
+body:JSON.stringify({
+type:"login",
+username:username.value,
+password:password.value
+})
+})
+.then(r=>r.json())
+.then(d=>{
+if(d.status==="success"){
+loginBox.classList.add("hidden");
+app.classList.remove("hidden");
+loadArrestNumber();
+}else{
+alert("Access Denied");
+}
+});
 }
 
-/* SAVE BOOKING */
+/* ARREST NUMBER */
+function loadArrestNumber(){
+
+fetch(scriptURL,{
+method:"POST",
+body:JSON.stringify({type:"getArrestNumber"})
+})
+.then(r=>r.json())
+.then(d=>{
+arrestNumber.innerText="Arrest Number: "+d.arrestNumber;
+window.currentArrestNumber=d.arrestNumber;
+});
+
+}
+
+/* SAVE */
 function saveBooking(){
-  fetch(scriptURL,{
-    method:"POST",
-    body:JSON.stringify({
-      type:"save",
-      custodyOfficer:custodyOfficer.value,
-      callsign:callsign.value,
-      officers:[arrestingOfficers.value],
-      suspect:suspect.value,
-      reason:reason.value,
-      location:location.value,
-      time:time.value
-    })
-  })
-  .then(r=>r.json())
-  .then(data=>{
-    if(data.status==="saved"){
-      alert("Booking Saved Successfully");
-    } else {
-      alert("Error Saving Booking");
-    }
-  });
+
+fetch(scriptURL,{
+method:"POST",
+body:JSON.stringify({
+type:"save",
+arrestNumber:window.currentArrestNumber,
+custodyOfficer:custodyOfficer.value,
+callsign:callsign.value,
+officers:officers.value,
+suspect:suspect.value,
+reason:reason.value,
+location:location.value,
+time:time.value,
+caution:caution.value,
+searchStatus:searchStatus.value,
+items:items.value,
+force:force.value,
+info:info.value,
+allergies:allergies.value,
+biometrics:biometrics.value,
+medication:medication.value,
+alerting:alerting.value,
+dependents:dependents.value,
+recentMedication:recentMedication.value,
+mugshot:"N/A"
+})
+})
+.then(r=>r.json())
+.then(d=>{
+if(d.status==="saved"){
+alert("Booking Saved");
+}
+});
+
+}
+
+/* REPORTS */
+function viewReports(){
+
+const pass=prompt("Re-enter password");
+
+fetch(scriptURL,{
+method:"POST",
+body:JSON.stringify({
+type:"login",
+username:username.value,
+password:pass
+})
+})
+.then(r=>r.json())
+.then(d=>{
+if(d.status==="success"){
+window.open("https://docs.google.com/spreadsheets/d/11UGQqD2kpNuOUzrPCYd5nlOCFimIchxZy0uv4cregYs","_blank");
+}else{
+alert("Access Denied");
+}
+});
+
+}
+
+function openLinks(){
+window.open("https://linktr.ee/PiggyanddoUKCR","_blank");
+}
+
+function logout(){
+location.reload();
 }
 
 </script>
