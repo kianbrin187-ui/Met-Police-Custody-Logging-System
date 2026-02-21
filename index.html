@@ -3,41 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Metropolitan Police Custody Arrest Log</title>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="form-card">
 
-    <!-- Met Police logo -->
     <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6a/Metropolitan_Police_Service_logo.svg/1200px-Metropolitan_Police_Service_logo.svg.png" alt="Met Police Logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Metropolitan_Police_Service_crest.png" alt="Met Police Logo">
     </div>
 
-    <h2 id="formTitle">Metropolitan Police Custody Arrest Log</h2>
+    <h2>Metropolitan Police Custody Arrest Log</h2>
 
     <form id="bookingForm">
 
-      <!-- Custody Officer -->
       <label>Custody Officer Name:</label>
-      <input type="text" id="custodyOfficer" placeholder="Enter custody officer name">
+      <input type="text" id="custodyOfficer">
 
       <label>Custody Officer Callsign:</label>
-      <input type="text" id="custodyCallsign" placeholder="Enter custody officer callsign">
+      <input type="text" id="custodyCallsign">
 
-      <!-- Arresting Officers -->
       <label>All Arresting Officers + Callsigns:</label>
-      <input type="text" id="officerSearch" placeholder="Search officer...">
-      <ul id="officerSuggestions" class="suggestions"></ul>
-      <button type="button" onclick="addOfficer()">Add Officer</button>
-      <ul id="selectedOfficers"></ul>
+      <select id="officerSelect" multiple="multiple" style="width:100%"></select>
 
-      <!-- Suspect Details -->
       <label>Suspect’s Full Name:</label>
       <input type="text" id="suspectName">
 
       <label>Reason for Arrest:</label>
-      <textarea id="reason" rows="2"></textarea>
+      <textarea id="reason"></textarea>
 
       <label>Location of Arrest:</label>
       <input type="text" id="location">
@@ -45,64 +46,49 @@
       <label>Time of Arrest:</label>
       <input type="datetime-local" id="timeOfArrest">
 
-      <!-- Rights / Caution -->
-      <label>Has the Suspect Been Read the Caution/Rights?</label>
+      <label>Has the Suspect Been Read the Caution?</label>
       <select id="cautionRead">
-        <option value="Yes">Yes</option>
-        <option value="N/A">N/A</option>
+        <option>Yes</option>
+        <option>N/A</option>
       </select>
 
-      <!-- Search Info -->
       <label>Has the Suspect Been Searched?</label>
       <select id="searched">
-        <option value="Yes">Yes</option>
-        <option value="No (Section 32 PACE)">No (Section 32 PACE)</option>
+        <option>Yes</option>
+        <option>No (Section 32 PACE)</option>
       </select>
 
-      <label>What Items Were Found During the Search?</label>
-      <textarea id="itemsFound" rows="2"></textarea>
+      <label>Items Found:</label>
+      <textarea id="itemsFound"></textarea>
 
-      <label>What Force Was Used? (if applicable, e.g., Pava)</label>
+      <label>Force Used:</label>
       <input type="text" id="forceUsed">
 
-      <label>Any Further Relevant Information</label>
-      <textarea id="additionalInfo" rows="3"></textarea>
+      <label>Additional Information:</label>
+      <textarea id="additionalInfo"></textarea>
 
-      <!-- Optional Roleplay Section -->
-      <h3>Additional Procedures (Roleplay)</h3>
-
-      <label>Any Allergies, Dietary Requirements, or Medical Conditions?</label>
-      <textarea id="allergies" rows="2"></textarea>
-
-      <label>Run Biometrics and Shoe Prints into PNC</label>
-      <select id="biometrics">
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-
-      <label>Any Regular Medical Procedures or Medication?</label>
-      <textarea id="medication" rows="2"></textarea>
-
-      <label>Would You Like Anybody Alerting You Are Here?</label>
-      <select id="alerting">
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-
-      <label>Do You Care for Anyone or Is Anyone Dependent on You? (Children, elderly, disabled, pets)</label>
-      <textarea id="dependents" rows="2"></textarea>
-
-      <label>Have You Taken Any Medication Recently?</label>
-      <textarea id="recentMedication" rows="2"></textarea>
-
-      <!-- Buttons -->
       <button type="submit">Save Booking</button>
       <button type="button" onclick="openArrests()">View All Arrests</button>
 
     </form>
 
-    <!-- Credits -->
     <p class="credits">Credits: C. Bradford (piggyanddo)</p>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <h3>Authorised Access Required</h3>
+
+      <label>Username</label>
+      <input type="text" id="loginUsername">
+
+      <label>Password</label>
+      <input type="password" id="loginPassword">
+
+      <button onclick="checkLogin()">Login</button>
+      <button onclick="closeLogin()">Cancel</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
