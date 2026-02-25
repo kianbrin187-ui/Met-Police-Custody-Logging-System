@@ -1,234 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Met Police Custody System</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#0B1B3F;
-}
-
-.topbar{
-background:#0B1B3F;
-color:white;
-padding:15px;
-display:flex;
-justify-content:space-between;
-}
-
-.container{
-background:white;
-max-width:800px;
-margin:40px auto;
-padding:30px;
-border-radius:10px;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
-}
-
-input,textarea,select,button{
-width:100%;
-padding:8px;
-margin-top:10px;
-border:2px solid #005CAB;
-border-radius:4px;
-}
-
-button{
-background:#0B1B3F;
-color:white;
-font-weight:bold;
-cursor:pointer;
-}
-
-.hidden{display:none;}
-
-</style>
+  <title>Custody Booking</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="topbar">
-Metropolitan Police Custody System
-<div>
-<button onclick="openLinks()">Useful Links</button>
-<button onclick="viewReports()">View Reports</button>
+<script>
+if (localStorage.getItem("loggedIn") !== "true") {
+  window.location.href = "login.html";
+}
+</script>
+
+<h2>Custody Booking Form</h2>
 <button onclick="logout()">Logout</button>
-</div>
-</div>
 
-<div class="container" id="loginBox">
-<h2>Login</h2>
-<input id="username" placeholder="Username">
-<input type="password" id="password" placeholder="Password">
-<button onclick="login()">Login</button>
-</div>
+<label>Officers:</label>
+<input type="text" id="officers">
 
-<div class="container hidden" id="app">
+<label>Suspect:</label>
+<input type="text" id="suspect">
 
-<h2>Custody Booking</h2>
+<label>Reason:</label>
+<input type="text" id="reason">
 
-<h3 id="arrestNumber"></h3>
+<label>Location:</label>
+<input type="text" id="location">
 
-<input id="custodyOfficer" placeholder="Custody Officer">
-<input id="callsign" placeholder="Callsign">
-<input id="officers" placeholder="Arresting Officers">
-<input id="suspect" placeholder="Suspect Name">
-<textarea id="reason" placeholder="Reason"></textarea>
-<input id="location" placeholder="Location">
-
-<label>Time of Arrest</label>
+<label>Time:</label>
 <input type="datetime-local" id="time">
 
-<label>Caution Read</label>
+<label>Caution:</label>
 <select id="caution">
 <option>Yes</option>
 <option>N/A</option>
 </select>
 
-<label>Search Status</label>
-<select id="searchStatus">
-<option>Already searched prior to arrival</option>
-<option>Search conducted under Section 32 of PACE</option>
+<label>Searched:</label>
+<select id="search">
+<option>Yes</option>
+<option>No</option>
 </select>
 
-<textarea id="items" placeholder="Items Found"></textarea>
-<input id="force" placeholder="Force Used">
-<textarea id="info" placeholder="Further Information"></textarea>
+<label>Items:</label>
+<textarea id="items"></textarea>
 
-<h3>Roleplay Procedures</h3>
+<label>Force:</label>
+<input type="text" id="force">
 
-<textarea id="allergies" placeholder="Allergies / Medical Conditions"></textarea>
-<select id="biometrics">
-<option value="true">Biometrics Submitted</option>
-<option value="">Not Submitted</option>
-</select>
-
-<textarea id="medication" placeholder="Medication"></textarea>
-<textarea id="alerting" placeholder="Alert Anyone?"></textarea>
-<textarea id="dependents" placeholder="Dependents?"></textarea>
-<textarea id="recentMedication" placeholder="Recent Medication"></textarea>
+<label>Additional:</label>
+<textarea id="additional"></textarea>
 
 <button onclick="saveBooking()">Save Booking</button>
 
-</div>
-
-<script>
-
-const scriptURL="PASTE_WEB_APP_URL_HERE";
-
-/* LOGIN */
-function login(){
-
-fetch(scriptURL,{
-method:"POST",
-body:JSON.stringify({
-type:"login",
-username:username.value,
-password:password.value
-})
-})
-.then(r=>r.json())
-.then(d=>{
-if(d.status==="success"){
-loginBox.classList.add("hidden");
-app.classList.remove("hidden");
-loadArrestNumber();
-}else{
-alert("Access Denied");
-}
-});
-}
-
-/* ARREST NUMBER */
-function loadArrestNumber(){
-
-fetch(scriptURL,{
-method:"POST",
-body:JSON.stringify({type:"getArrestNumber"})
-})
-.then(r=>r.json())
-.then(d=>{
-arrestNumber.innerText="Arrest Number: "+d.arrestNumber;
-window.currentArrestNumber=d.arrestNumber;
-});
-
-}
-
-/* SAVE */
-function saveBooking(){
-
-fetch(scriptURL,{
-method:"POST",
-body:JSON.stringify({
-type:"save",
-arrestNumber:window.currentArrestNumber,
-custodyOfficer:custodyOfficer.value,
-callsign:callsign.value,
-officers:officers.value,
-suspect:suspect.value,
-reason:reason.value,
-location:location.value,
-time:time.value,
-caution:caution.value,
-searchStatus:searchStatus.value,
-items:items.value,
-force:force.value,
-info:info.value,
-allergies:allergies.value,
-biometrics:biometrics.value,
-medication:medication.value,
-alerting:alerting.value,
-dependents:dependents.value,
-recentMedication:recentMedication.value,
-mugshot:"N/A"
-})
-})
-.then(r=>r.json())
-.then(d=>{
-if(d.status==="saved"){
-alert("Booking Saved");
-}
-});
-
-}
-
-/* REPORTS */
-function viewReports(){
-
-const pass=prompt("Re-enter password");
-
-fetch(scriptURL,{
-method:"POST",
-body:JSON.stringify({
-type:"login",
-username:username.value,
-password:pass
-})
-})
-.then(r=>r.json())
-.then(d=>{
-if(d.status==="success"){
-window.open("https://docs.google.com/spreadsheets/d/11UGQqD2kpNuOUzrPCYd5nlOCFimIchxZy0uv4cregYs","_blank");
-}else{
-alert("Access Denied");
-}
-});
-
-}
-
-function openLinks(){
-window.open("https://linktr.ee/PiggyanddoUKCR","_blank");
-}
-
-function logout(){
-location.reload();
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
