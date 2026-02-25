@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custody Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<h2>Custody Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<p id="message"></p>
+
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby9bpy8HdtUOgt76AZaL6kqrO8FcuTDAIDzjFKDYCsc9XpCBdyxoN1k3E219AMwjmg6/exec";
+
+function login() {
+  fetch(WEB_APP_URL, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      type: "login",
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value
+    })
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.success) {
+      localStorage.setItem("loggedIn", "true");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("message").innerText = "Invalid login";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
