@@ -8,7 +8,9 @@ function logout() {
 function saveBooking() {
   fetch(WEB_APP_URL, {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
       type: "booking",
       officers: document.getElementById("officers").value,
@@ -23,9 +25,13 @@ function saveBooking() {
       additional: document.getElementById("additional").value
     })
   })
-  .then(r => r.json())
-  .then(res => {
-    alert("Saved as " + res.arrestNumber);
+  .then(response => response.json())
+  .then(data => {
+    alert("Booking saved successfully!\nArrest Number: " + data.arrestNumber);
     location.reload();
+  })
+  .catch(error => {
+    alert("Error saving booking.");
+    console.error(error);
   });
 }
