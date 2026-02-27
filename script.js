@@ -1,10 +1,8 @@
-
-function loginUser(){
+function login(){
 
 const users = {
 "admin":"met123",
-"officer1":"police1",
-"officer2":"metpolice"
+"officer1":"police1"
 };
 
 let user = document.getElementById("username").value;
