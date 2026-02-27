@@ -1,47 +1,76 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
-  padding: 30px;
+body{
+margin:0;
+font-family:Arial;
+background:#050d1a;
+color:white;
 }
 
-h2 {
-  margin-bottom: 20px;
+/* Sidebar */
+
+.sidebar{
+width:230px;
+height:100vh;
+background:#00162e;
+position:fixed;
+padding-top:25px;
+border-right:3px solid #caa400;
 }
 
-label {
-  display: block;
-  margin-top: 15px;
-  font-weight: bold;
+.sidebar h2{
+text-align:center;
+margin-bottom:40px;
 }
 
-input, select, textarea {
-  display: block;
-  margin-top: 5px;
-  padding: 8px;
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.sidebar a{
+display:block;
+color:white;
+padding:15px;
+text-decoration:none;
+border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-textarea {
-  height: 70px;
+.sidebar a:hover{
+background:#003e7e;
 }
 
-button {
-  margin-top: 20px;
-  padding: 10px 15px;
-  border: none;
-  background-color: #1f2937;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
+/* Main */
+
+.main{
+margin-left:230px;
+padding:40px;
 }
 
-button:hover {
-  background-color: #374151;
+.card{
+background:#0a1f44;
+padding:25px;
+border-radius:12px;
+margin-bottom:30px;
+border:1px solid #caa400;
 }
 
-#message {
-  margin-top: 15px;
-  color: red;
+.logo{
+width:120px;
+}
+
+.button{
+display:inline-block;
+padding:15px 30px;
+margin-top:15px;
+background:#003e7e;
+color:white;
+text-decoration:none;
+border-radius:8px;
+border:2px solid #caa400;
+transition:0.3s;
+}
+
+.button:hover{
+background:#0055a5;
+transform:scale(1.05);
+}
+
+iframe{
+width:100%;
+height:700px;
+border:none;
 }
