@@ -1,59 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Custody Booking</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MET Command Database</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#050d1a;
+color:white;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:230px;
+height:100vh;
+background:#00162e;
+position:fixed;
+padding-top:25px;
+border-right:3px solid #caa400;
+}
+
+.sidebar h2{
+text-align:center;
+margin-bottom:40px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:15px;
+text-decoration:none;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar a:hover{
+background:#003e7e;
+}
+
+/* Main Panel */
+
+.main{
+margin-left:230px;
+padding:40px;
+}
+
+.card{
+background:#0a1f44;
+padding:25px;
+border-radius:12px;
+margin-bottom:30px;
+border:1px solid #caa400;
+}
+
+.logo{
+width:120px;
+}
+
+.header{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.button{
+display:inline-block;
+padding:15px 30px;
+margin-top:15px;
+background:#003e7e;
+color:white;
+text-decoration:none;
+border-radius:8px;
+border:2px solid #caa400;
+transition:0.3s;
+}
+
+.button:hover{
+background:#0055a5;
+transform:scale(1.05);
+}
+
+</style>
+
 </head>
+
 <body>
 
-<script>
-if (localStorage.getItem("loggedIn") !== "true") {
-  window.location.href = "login.html";
-}
-</script>
+<div class="sidebar">
+<h2>MET CONTROL</h2>
 
-<h2>Custody Booking Form</h2>
-<button onclick="logout()">Logout</button>
+<a href="#arrest">Arrest Reports</a>
 
-<label>Officers:</label>
-<input type="text" id="officers">
+<a href="https://docs.google.com/spreadsheets/d/1gwpjY4qQ4U59kASsyFLvgkYKMdKCV0MOqqEBOn3cTqQ/edit"
+target="_blank">
+📂 View Custody Logs
+</a>
 
-<label>Suspect:</label>
-<input type="text" id="suspect">
+<a href="https://linktr.ee/PiggyanddoUKCR" target="_blank">
+🔗 Useful Links
+</a>
 
-<label>Reason:</label>
-<input type="text" id="reason">
+</div>
 
-<label>Location:</label>
-<input type="text" id="location">
+<div class="main">
 
-<label>Time:</label>
-<input type="datetime-local" id="time">
+<div class="card header">
+<img src="https://i.postimg.cc/WzNLHJDT/a-mockup-of-the-potential-new-metropolitan-police-crest-v0-o852wyngoh5a1-(1).jpg" class="logo">
+<div>
+<h1>Metropolitan Police Database</h1>
+<p>Operational Command Panel</p>
+</div>
+</div>
 
-<label>Caution:</label>
-<select id="caution">
-<option>Yes</option>
-<option>N/A</option>
-</select>
+<div id="arrest" class="card">
+<h2>🚔 Arrest Submission</h2>
 
-<label>Searched:</label>
-<select id="search">
-<option>Yes</option>
-<option>No</option>
-</select>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc0nEq5miwEXDaBhYyFhvJC1miMQuS8uXL7X6CX0c7yisyTlg/viewform?embedded=true"
+width="100%" height="700"></iframe>
 
-<label>Items:</label>
-<textarea id="items"></textarea>
+</div>
 
-<label>Force:</label>
-<input type="text" id="force">
-
-<label>Additional:</label>
-<textarea id="additional"></textarea>
-
-<button onclick="saveBooking()">Save Booking</button>
-
-<script src="script.js"></script>
+</div>
 
 </body>
 </html>
