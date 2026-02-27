@@ -1,4 +1,4 @@
-function login(){
+function loginUser(){
 
 const users = {
 "admin":"met123",
@@ -12,7 +12,7 @@ if(users[user] && users[user] === pass){
 window.location.href = "dashboard.html";
 }
 else{
-document.getElementById("error").innerText = "Invalid Login";
+document.getElementById("error").innerText = "Invalid Username or Password";
 }
 
 }
