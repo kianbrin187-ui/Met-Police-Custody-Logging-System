@@ -1,15 +1,13 @@
-
-html, body{
+body{
 margin:0;
-height:100%;
 font-family:Arial;
 background:#050d1a;
 color:white;
 }
 
-/* LOGIN */
+/* LOGIN PAGE */
 
-.login-body{
+.login-page{
 display:flex;
 justify-content:center;
 align-items:center;
@@ -21,20 +19,21 @@ background:#0a1f44;
 padding:40px;
 border-radius:12px;
 text-align:center;
+width:320px;
 border:2px solid #caa400;
 }
 
 .login-box input{
-display:block;
-width:250px;
+width:100%;
 padding:12px;
-margin:15px 0;
-border-radius:6px;
+margin:12px 0;
 border:none;
+border-radius:6px;
 }
 
 .login-box button{
-padding:12px 25px;
+width:100%;
+padding:12px;
 background:#003e7e;
 color:white;
 border:none;
@@ -42,34 +41,42 @@ border-radius:6px;
 cursor:pointer;
 }
 
-.login-logo{
+/* LOGO CIRCLE */
+
+.logo-circle{
 width:120px;
-margin-bottom:20px;
+height:120px;
+margin:auto;
+border-radius:50%;
+overflow:hidden;
+border:3px solid #caa400;
 }
 
-/* SIDEBAR */
+.logo-circle img{
+width:100%;
+}
+
+/* DASHBOARD */
 
 .sidebar{
 width:230px;
 height:100vh;
-position:fixed;
 background:#00162e;
+position:fixed;
 padding-top:30px;
 border-right:3px solid #caa400;
 }
 
 .sidebar a{
 display:block;
-color:white;
 padding:15px;
+color:white;
 text-decoration:none;
 }
 
 .sidebar a:hover{
 background:#003e7e;
 }
-
-/* MAIN */
 
 .main{
 margin-left:230px;
@@ -81,12 +88,4 @@ background:#0a1f44;
 padding:25px;
 border-radius:12px;
 border:1px solid #caa400;
-margin-bottom:25px;
-}
-
-iframe{
-width:100%;
-height:70vh;
-border:none;
-border-radius:10px;
 }
