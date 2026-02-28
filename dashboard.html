@@ -1,49 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Metropolitan Police Service - Command</title>
+<title>MET Command Terminal</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="terminal-body">
 
 <div class="terminal-header">
-Metropolitan Police Service – Command Interface
+Metropolitan Police Service | Command Terminal
 </div>
 
 <div class="terminal-layout">
 
 <div class="terminal-sidebar">
 
-<button onclick="location.href='dashboard.html'">Dashboard</button>
-
-<button onclick="location.href='https://docs.google.com/forms/d/e/1FAIpQLSc0nEq5miwEXDaBhYyFhvJC1miMQuS8uXL7X6CX0c7yisyTlg/viewform'">
-Arrest Form
-</button>
-
-<button onclick="location.href='https://docs.google.com/spreadsheets/d/1gwpjY4qQ4U59kASsyFLvgkYKMdKCV0MOqqEBOn3cTqQ/edit'">
-View Logs
-</button>
-
-<button onclick="location.href='https://linktr.ee/PiggyanddoUKCR'">
-Useful Links
-</button>
-
-<button onclick="location.href='index.html'">
-Logout
-</button>
+<button onclick="loadHome()">Dashboard</button>
+<button onclick="loadForm()">Report Form</button>
+<button onclick="logout()">Logout</button>
 
 </div>
 
-<div class="terminal-main">
-
-<h2>System Status: Active</h2>
-<p>Secure Network Connected</p>
-<p>Welcome Officer</p>
+<div class="terminal-main" id="main-content">
 
 </div>
 
 </div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
