@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MET Control Panel</title>
+<title>MET Command Interface</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="terminal-body">
 
-<div class="sidebar">
+<div class="terminal-header">
+MET COMMAND TERMINAL – AUTHORIZED ACCESS
+</div>
 
-<h2>MET CONTROL</h2>
+<div class="terminal-layout">
 
-<a href="dashboard.html">Dashboard</a>
+<div class="terminal-sidebar">
 
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSc0nEq5miwEXDaBhYyFhvJC1miMQuS8uXL7X6CX0c7yisyTlg/viewform?embedded=true">
-Arrest Form
-</a>
-
-<a href="https://docs.google.com/spreadsheets/d/1gwpjY4qQ4U59kASsyFLvgkYKMdKCV0MOqqEBOn3cTqQ/edit">
-Custody Logs
-</a>
-
-<a href="index.html">Logout</a>
+<button onclick="loadHome()">🏠 Dashboard</button>
+<button onclick="loadArrestForm()">🚔 Arrest Form</button>
+<button onclick="loadCustody()">📂 Custody Logs</button>
+<button onclick="loadLinks()">🔗 Useful Links</button>
+<button onclick="location.href='index.html'">🚪 Logout</button>
 
 </div>
 
-<div class="main">
+<div class="terminal-main" id="main-content">
 
-<div class="card">
-<h1>Welcome Officer</h1>
-<p>MET Command System</p>
+<h2>System Status: ACTIVE</h2>
+<p>Welcome Officer.</p>
+<p>Secure Network Connected.</p>
+
 </div>
 
 </div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
