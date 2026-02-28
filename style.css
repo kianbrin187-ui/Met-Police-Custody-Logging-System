@@ -1,8 +1,8 @@
 body{
 margin:0;
-font-family:Consolas, monospace;
-background:black;
-color:#00ff66;
+font-family:Arial, Helvetica, sans-serif;
+background:#0b1d36;
+color:white;
 }
 
 /* BOOT SCREEN */
@@ -11,35 +11,30 @@ color:#00ff66;
 position:fixed;
 width:100%;
 height:100%;
-background:black;
+background:#0b1d36;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-animation:fadeOut 2s ease forwards;
+animation:fadeOut 1.5s ease forwards;
 animation-delay:3s;
 }
 
 .boot-logo img{
-width:140px;
+width:130px;
 border-radius:50%;
-border:3px solid #00ff66;
 }
 
 .boot-text{
 margin-top:20px;
-letter-spacing:2px;
+letter-spacing:1px;
+font-weight:500;
 }
 
 .boot-loading{
 margin-top:10px;
 font-size:14px;
 opacity:0.7;
-animation:blink 1s infinite;
-}
-
-@keyframes blink{
-50%{opacity:0.2;}
 }
 
 @keyframes fadeOut{
@@ -49,14 +44,14 @@ visibility:hidden;
 }
 }
 
-/* LOGIN */
+/* LOGIN PAGE */
 
 #login-container{
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-background:black;
+background:#0b1d36;
 }
 
 .hidden{
@@ -64,12 +59,12 @@ display:none;
 }
 
 .login-box{
-background:#001a0f;
+background:#112b4a;
 padding:40px;
-border:2px solid #00ff66;
-width:320px;
+border-radius:10px;
+width:340px;
 text-align:center;
-box-shadow:0 0 20px #00ff66;
+box-shadow:0 5px 20px rgba(0,0,0,0.4);
 }
 
 .logo-circle{
@@ -78,7 +73,7 @@ height:110px;
 margin:auto;
 border-radius:50%;
 overflow:hidden;
-border:2px solid #00ff66;
+margin-bottom:20px;
 }
 
 .logo-circle img{
@@ -89,65 +84,77 @@ width:100%;
 width:100%;
 padding:12px;
 margin:12px 0;
-background:black;
-border:1px solid #00ff66;
-color:#00ff66;
+border-radius:6px;
+border:1px solid #2f4f77;
+background:#0f223d;
+color:white;
+}
+
+.login-box input:focus{
+outline:none;
+border-color:#4f86c6;
 }
 
 .login-box button{
 width:100%;
 padding:12px;
-background:#003300;
-border:1px solid #00ff66;
-color:#00ff66;
+background:#1d4e89;
+border:none;
+border-radius:6px;
+color:white;
+font-weight:500;
 cursor:pointer;
 }
 
 .login-box button:hover{
-background:#00ff66;
-color:black;
+background:#2563a6;
 }
 
-/* TERMINAL UI */
+/* DASHBOARD */
 
 .terminal-body{
-background:black;
-color:#00ff66;
+background:#0b1d36;
+color:white;
 }
 
 .terminal-header{
+background:#112b4a;
 padding:15px;
-border-bottom:1px solid #00ff66;
 text-align:center;
+font-weight:500;
+border-bottom:1px solid #1f3f63;
 }
 
 .terminal-layout{
 display:flex;
-height:calc(100vh - 50px);
+height:calc(100vh - 60px);
 }
 
 .terminal-sidebar{
-width:200px;
-border-right:1px solid #00ff66;
-padding:15px;
+width:220px;
+background:#112b4a;
+padding:20px;
+border-right:1px solid #1f3f63;
 }
 
 .terminal-sidebar button{
 width:100%;
-margin-bottom:10px;
-background:black;
-color:#00ff66;
-border:1px solid #00ff66;
-padding:10px;
+margin-bottom:12px;
+padding:12px;
+background:#1d4e89;
+border:none;
+border-radius:6px;
+color:white;
 cursor:pointer;
+text-align:left;
 }
 
 .terminal-sidebar button:hover{
-background:#00ff66;
-color:black;
+background:#2563a6;
 }
 
 .terminal-main{
 flex:1;
-padding:20px;
+padding:30px;
+background:#0f223d;
 }
