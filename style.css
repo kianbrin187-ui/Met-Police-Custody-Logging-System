@@ -1,14 +1,13 @@
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial, sans-serif;
 background:#061629;
 color:white;
-text-align:center;
 }
 
-/* BOOT */
+/* BOOT SCREEN */
 
-#boot-screen{
+#boot{
 position:fixed;
 width:100%;
 height:100%;
@@ -17,8 +16,9 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-animation:fadeOut 2s forwards;
+animation:fadeOut 2s ease forwards;
 animation-delay:2s;
+z-index:10;
 }
 
 @keyframes fadeOut{
@@ -30,33 +30,58 @@ visibility:hidden;
 
 /* LOGIN */
 
-#login-box{
-width:320px;
-margin:200px auto;
-background:#0d2746;
-padding:40px;
-border-radius:10px;
+#login-container{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 }
 
-input{
+.login-box{
+background:#0d2746;
+padding:40px;
+width:340px;
+border-radius:10px;
+border:1px solid #1f3f63;
+text-align:center;
+}
+
+.login-box input{
 width:100%;
 padding:12px;
 margin:10px 0;
-border:none;
+background:#0b223d;
+border:1px solid #1f3f63;
+color:white;
 border-radius:6px;
 }
 
-button{
+.login-box button{
 width:100%;
 padding:12px;
 background:#1a4d8f;
-color:white;
 border:none;
+color:white;
 border-radius:6px;
 cursor:pointer;
 }
 
+.login-box button:hover{
+background:#2b6cb0;
+}
+
 /* DASHBOARD */
+
+.dashboard-body{
+background:#061629;
+}
+
+.header{
+background:#0d2746;
+padding:15px;
+text-align:center;
+border-bottom:1px solid #1f3f63;
+}
 
 .layout{
 display:flex;
@@ -67,16 +92,22 @@ height:100vh;
 width:220px;
 background:#0d2746;
 padding:20px;
+border-right:1px solid #1f3f63;
 }
 
 .sidebar button{
 width:100%;
-margin-bottom:12px;
 padding:12px;
+margin-bottom:12px;
 background:#1a4d8f;
 border:none;
 color:white;
 border-radius:6px;
+cursor:pointer;
+}
+
+.sidebar button:hover{
+background:#2b6cb0;
 }
 
 .main{
