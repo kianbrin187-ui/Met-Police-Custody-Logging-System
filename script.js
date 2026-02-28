@@ -1,37 +1,63 @@
+/* Boot timing */
+setTimeout(function(){
+document.getElementById("boot").style.display="none";
+},2000);
+
+/* USER DATABASE */
+const users = {
+    "admin": "met123",
+    "officer1": "blue456",
+    "sergeant": "navy789"
+};
+
+/* LOGIN FUNCTION */
+
 function login(){
 
-let user = document.getElementById("username").value;
-let pass = document.getElementById("password").value;
+let user = document.getElementById("username").value.trim();
+let pass = document.getElementById("password").value.trim();
 
-if(user && pass){
+if(users[user] && users[user] === pass){
 
-localStorage.setItem("currentUser",user);
+localStorage.setItem("currentUser", user);
 window.location.href="dashboard.html";
 
-}
-else{
-document.getElementById("error").innerText="Enter Username + Password";
+}else{
+
+document.getElementById("error").innerText="Invalid Username or Password";
+
 }
 
 }
+
+/* DASHBOARD */
 
 function loadHome(){
 
 let user = localStorage.getItem("currentUser");
 
+if(!user){
+window.location.href="index.html";
+return;
+}
+
 document.getElementById("main-content").innerHTML=
-"<h2>Hello " + user + "</h2><p>System Secure</p>";
+"<h2>Hello " + user + "</h2><p>System Status: Secure</p>";
 }
 
 function loadForm(){
 
 document.getElementById("main-content").innerHTML=`
-<iframe width="100%" height="80vh"
+<iframe 
+width="100%" 
+height="80%" 
+style="border:none;border-radius:8px;background:white;"
 src="https://docs.google.com/forms/d/e/1FAIpQLSc0nEq5miwEXDaBhYyFhvJC1miMQuS8uXL7X6CX0c7yisyTlg/viewform?embedded=true">
 </iframe>
 `;
 }
 
 function logout(){
+localStorage.removeItem("currentUser");
 window.location.href="index.html";
 }
