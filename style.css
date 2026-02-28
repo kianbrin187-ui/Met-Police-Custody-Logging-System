@@ -1,65 +1,86 @@
- body{
+body{
 margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#081b33;
+font-family:Arial;
+background:#061629;
 color:white;
 }
 
-/* Remove any possible green from browser defaults */
-a, a:visited, a:hover, a:active {
-color: white;
-text-decoration: none;
+/* BOOT SCREEN */
+
+#boot-screen{
+position:fixed;
+width:100%;
+height:100%;
+background:#061629;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+animation:fadeOut 2s ease forwards;
+animation-delay:3s;
+text-align:center;
+}
+
+.boot-logo{
+width:140px;
+border-radius:50%;
+margin-bottom:20px;
+}
+
+.boot-text{
+opacity:0.7;
+}
+
+@keyframes fadeOut{
+to{
+opacity:0;
+visibility:hidden;
+}
 }
 
 /* LOGIN */
+
+.hidden{
+display:none;
+}
 
 #login-container{
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-background:#081b33;
-}
-
-.hidden{
-display:none;
 }
 
 .login-box{
-background:#102a4a;
+background:#0d2746;
 padding:40px;
-border-radius:10px;
 width:340px;
 text-align:center;
-box-shadow:0 5px 20px rgba(0,0,0,0.5);
+border-radius:10px;
+border:1px solid #1f3f63;
 }
 
-.logo-circle{
-width:110px;
-height:110px;
+.login-logo-circle{
+width:100px;
+height:100px;
 margin:auto;
 border-radius:50%;
 overflow:hidden;
 margin-bottom:20px;
 }
 
-.logo-circle img{
+.login-logo-circle img{
 width:100%;
 }
 
 .login-box input{
 width:100%;
 padding:12px;
-margin:12px 0;
-border-radius:6px;
-border:1px solid #1c3f6e;
-background:#0e213d;
+margin:10px 0;
+background:#0b223d;
+border:1px solid #1f3f63;
 color:white;
-}
-
-.login-box input:focus{
-outline:none;
-border-color:#2d5d9f;
+border-radius:6px;
 }
 
 .login-box button{
@@ -67,28 +88,18 @@ width:100%;
 padding:12px;
 background:#1a4d8f;
 border:none;
-border-radius:6px;
 color:white;
-font-weight:500;
+border-radius:6px;
 cursor:pointer;
-}
-
-.login-box button:hover{
-background:#2b6cb0;
 }
 
 /* DASHBOARD */
 
-.terminal-body{
-background:#081b33;
-}
-
 .terminal-header{
-background:#102a4a;
+background:#0d2746;
 padding:15px;
 text-align:center;
-font-weight:500;
-border-bottom:1px solid #163b66;
+border-bottom:1px solid #1f3f63;
 }
 
 .terminal-layout{
@@ -97,31 +108,32 @@ height:100vh;
 }
 
 .terminal-sidebar{
-width:230px;
-background:#102a4a;
+width:220px;
+background:#0d2746;
 padding:20px;
-border-right:1px solid #163b66;
+border-right:1px solid #1f3f63;
 }
 
 .terminal-sidebar button{
 width:100%;
-margin-bottom:12px;
 padding:12px;
+margin-bottom:12px;
 background:#1a4d8f;
 border:none;
-border-radius:6px;
 color:white;
+border-radius:6px;
 cursor:pointer;
-text-align:left;
-transition:0.2s;
-}
-
-.terminal-sidebar button:hover{
-background:#2b6cb0;
 }
 
 .terminal-main{
 flex:1;
 padding:30px;
-background:#0e213d;
+background:#0b223d;
+}
+
+.form-frame{
+width:100%;
+height:80vh;
+border:none;
+background:white;
 }
