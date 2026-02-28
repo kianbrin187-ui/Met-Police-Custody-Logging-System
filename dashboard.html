@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MET Command Terminal</title>
+<title>MET Dashboard</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="terminal-body">
+<body>
 
-<div class="terminal-header">
-Metropolitan Police Service | Command Terminal
+<div class="header">
+MET Command System
 </div>
 
-<div class="terminal-layout">
+<div class="layout">
 
-<!-- Sidebar -->
-<div class="terminal-sidebar">
+<div class="sidebar">
 
 <button onclick="loadHome()">Dashboard</button>
 
-<button onclick="loadForm()">🚔 Report Form</button>
-
-<button onclick="window.open('https://docs.google.com/spreadsheets/d/1gwpjY4qQ4U59kASsyFLvgkYKMdKCV0MOqqEBOn3cTqQ/edit','_blank')">
-📂 View Reports
+<button onclick="loadForm()">
+Report Form
 </button>
 
-<button onclick="window.open('https://linktr.ee/PiggyanddoUKCR','_blank')">
-🔗 Linktree
+<button onclick="window.open('https://docs.google.com/spreadsheets/d/1gwpjY4qQ4U59kASsyFLvgkYKMdKCV0MOqqEBOn3cTqQ/edit')">
+View Reports
+</button>
+
+<button onclick="window.open('https://linktr.ee/PiggyanddoUKCR')">
+Useful Links
 </button>
 
 <button onclick="logout()">Logout</button>
 
 </div>
 
-<!-- Main Panel -->
-<div class="terminal-main" id="main-content"></div>
+<div id="main-content" class="main"></div>
 
 </div>
 
