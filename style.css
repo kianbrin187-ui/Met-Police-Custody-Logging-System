@@ -60,19 +60,6 @@ border-radius:10px;
 border:1px solid #1f3f63;
 }
 
-.login-logo-circle{
-width:100px;
-height:100px;
-margin:auto;
-border-radius:50%;
-overflow:hidden;
-margin-bottom:20px;
-}
-
-.login-logo-circle img{
-width:100%;
-}
-
 .login-box input{
 width:100%;
 padding:12px;
@@ -125,10 +112,21 @@ border-radius:6px;
 cursor:pointer;
 }
 
+.terminal-sidebar button:hover{
+background:#2b6cb0;
+}
+
 .terminal-main{
 flex:1;
 padding:30px;
 background:#0b223d;
+}
+
+.form-card{
+background:#0d2746;
+padding:20px;
+border-radius:10px;
+border:1px solid #1f3f63;
 }
 
 .form-frame{
@@ -136,4 +134,5 @@ width:100%;
 height:80vh;
 border:none;
 background:white;
+border-radius:8px;
 }
