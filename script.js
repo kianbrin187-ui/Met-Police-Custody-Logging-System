@@ -1,57 +1,34 @@
-const users = {
-"admin":"met123",
-"officer1":"police1"
-};
-
-/* Boot → Login */
-setTimeout(()=>{
-document.getElementById("login-container").classList.remove("hidden");
-},3000);
-
-/* Login */
-
-function loginUser(){
+function login(){
 
 let user = document.getElementById("username").value;
 let pass = document.getElementById("password").value;
 
-if(users[user] && pass === "met123"){
+if(user && pass){
 
 localStorage.setItem("currentUser",user);
 window.location.href="dashboard.html";
 
 }
 else{
-document.getElementById("error").innerText="Invalid Credentials";
+document.getElementById("error").innerText="Enter Username + Password";
 }
 
 }
-
-/* Dashboard */
 
 function loadHome(){
 
 let user = localStorage.getItem("currentUser");
 
-document.getElementById("main-content").innerHTML=`
-<h2>Hello ${user}</h2>
-<p>System Status: Secure</p>
-`;
+document.getElementById("main-content").innerHTML=
+"<h2>Hello " + user + "</h2><p>System Secure</p>";
 }
 
 function loadForm(){
 
 document.getElementById("main-content").innerHTML=`
-
-<div class="form-card">
-
-<h2>Police Report Form</h2>
-
-<iframe class="form-frame"
+<iframe width="100%" height="80vh"
 src="https://docs.google.com/forms/d/e/1FAIpQLSc0nEq5miwEXDaBhYyFhvJC1miMQuS8uXL7X6CX0c7yisyTlg/viewform?embedded=true">
 </iframe>
-
-</div>
 `;
 }
 
