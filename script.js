@@ -18,18 +18,18 @@ if(users[user] && users[user] === pass){
 window.location.href = "dashboard.html";
 }
 else{
-document.getElementById("error").innerText = "ACCESS DENIED";
+document.getElementById("error").innerText = "Invalid Username or Password";
 }
 
 }
 
-// Dashboard content loader
+// Dashboard panel loader
 
 function loadHome(){
 document.getElementById("main-content").innerHTML = `
-<h2>System Status: ACTIVE</h2>
-<p>Welcome Officer.</p>
-<p>Secure Network Connected.</p>
+<h2>System Status: Active</h2>
+<p>Secure Network Connected</p>
+<p>Welcome Officer</p>
 `;
 }
 
