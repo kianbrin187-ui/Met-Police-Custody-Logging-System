@@ -5,9 +5,13 @@ document.getElementById("boot").style.display="none";
 
 /* USER DATABASE */
 const users = {
-    "admin": "met123",
-    "officer1": "blue456",
-    "sergeant": "navy789"
+    "c.bradford": "admin123",
+    "a.kalasi": "Ak123",
+    "l.phillips": "Lewis123",
+    "h.oliver": "Oliver123",
+    "b.henderson": "Bradyn123",
+    "j.anderson": "Jacob123",
+    "s.rob": "Rob123"
 };
 
 /* LOGIN FUNCTION */
