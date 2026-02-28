@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MET Command</title>
+<title>MET Command Access</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="boot-screen">
-<h2>Metropolitan Police Service</h2>
-<p>Booting System...</p>
+<!-- Boot Screen -->
+<div id="boot">
+    <h1>Metropolitan Police Service</h1>
+    <p>Initialising Secure Terminal...</p>
 </div>
 
-<div id="login-box">
+<!-- Login -->
+<div id="login-container">
+    <div class="login-box">
+        <h2>Officer Login</h2>
 
-<h2>Officer Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
 
-<input id="username" placeholder="Username">
-<input id="password" type="password" placeholder="Password">
+        <button onclick="login()">Login</button>
 
-<button onclick="login()">Login</button>
-
-<p id="error"></p>
-
+        <p id="error"></p>
+    </div>
 </div>
 
 <script src="script.js"></script>
