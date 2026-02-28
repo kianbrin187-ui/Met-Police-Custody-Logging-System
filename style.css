@@ -1,91 +1,153 @@
 body{
 margin:0;
-font-family:Arial;
-background:#050d1a;
-color:white;
+font-family:Consolas, monospace;
+background:black;
+color:#00ff66;
 }
 
-/* LOGIN PAGE */
+/* BOOT SCREEN */
 
-.login-page{
+#boot-screen{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+animation:fadeOut 2s ease forwards;
+animation-delay:3s;
+}
+
+.boot-logo img{
+width:140px;
+border-radius:50%;
+border:3px solid #00ff66;
+}
+
+.boot-text{
+margin-top:20px;
+letter-spacing:2px;
+}
+
+.boot-loading{
+margin-top:10px;
+font-size:14px;
+opacity:0.7;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+50%{opacity:0.2;}
+}
+
+@keyframes fadeOut{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+/* LOGIN */
+
+#login-container{
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
+background:black;
+}
+
+.hidden{
+display:none;
 }
 
 .login-box{
-background:#0a1f44;
+background:#001a0f;
 padding:40px;
-border-radius:12px;
-text-align:center;
+border:2px solid #00ff66;
 width:320px;
-border:2px solid #caa400;
+text-align:center;
+box-shadow:0 0 20px #00ff66;
 }
-
-.login-box input{
-width:100%;
-padding:12px;
-margin:12px 0;
-border:none;
-border-radius:6px;
-}
-
-.login-box button{
-width:100%;
-padding:12px;
-background:#003e7e;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
-
-/* LOGO CIRCLE */
 
 .logo-circle{
-width:120px;
-height:120px;
+width:110px;
+height:110px;
 margin:auto;
 border-radius:50%;
 overflow:hidden;
-border:3px solid #caa400;
+border:2px solid #00ff66;
 }
 
 .logo-circle img{
 width:100%;
 }
 
-/* DASHBOARD */
-
-.sidebar{
-width:230px;
-height:100vh;
-background:#00162e;
-position:fixed;
-padding-top:30px;
-border-right:3px solid #caa400;
+.login-box input{
+width:100%;
+padding:12px;
+margin:12px 0;
+background:black;
+border:1px solid #00ff66;
+color:#00ff66;
 }
 
-.sidebar a{
-display:block;
+.login-box button{
+width:100%;
+padding:12px;
+background:#003300;
+border:1px solid #00ff66;
+color:#00ff66;
+cursor:pointer;
+}
+
+.login-box button:hover{
+background:#00ff66;
+color:black;
+}
+
+/* TERMINAL UI */
+
+.terminal-body{
+background:black;
+color:#00ff66;
+}
+
+.terminal-header{
 padding:15px;
-color:white;
-text-decoration:none;
+border-bottom:1px solid #00ff66;
+text-align:center;
 }
 
-.sidebar a:hover{
-background:#003e7e;
+.terminal-layout{
+display:flex;
+height:calc(100vh - 50px);
 }
 
-.main{
-margin-left:230px;
-padding:30px;
+.terminal-sidebar{
+width:200px;
+border-right:1px solid #00ff66;
+padding:15px;
 }
 
-.card{
-background:#0a1f44;
-padding:25px;
-border-radius:12px;
-border:1px solid #caa400;
+.terminal-sidebar button{
+width:100%;
+margin-bottom:10px;
+background:black;
+color:#00ff66;
+border:1px solid #00ff66;
+padding:10px;
+cursor:pointer;
+}
+
+.terminal-sidebar button:hover{
+background:#00ff66;
+color:black;
+}
+
+.terminal-main{
+flex:1;
+padding:20px;
 }
