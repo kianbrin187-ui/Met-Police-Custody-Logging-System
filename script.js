@@ -6,12 +6,13 @@ document.getElementById("boot").style.display="none";
 /* USER DATABASE */
 const users = {
     "c.bradford": "admin123",
-    "a.kalasi": "Ak123",
+    "a.kalsi": "Ak123",
     "l.phillips": "Lewis123",
     "h.oliver": "Oliver123",
     "b.henderson": "Bradyn123",
     "j.anderson": "Jacob123",
     "s.rob": "Rob123"
+     "t.evans": "Terry123"
 };
 
 /* LOGIN FUNCTION */
