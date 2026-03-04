@@ -1,117 +1,154 @@
+:root{
+    --met-navy:#0B1B3F;
+    --met-dark:#08142E;
+    --met-blue:#005CAB;
+    --gov-grey:#F4F6F9;
+}
+
 body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#061629;
-color:white;
+    margin:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:var(--met-navy);
+    color:white;
 }
 
-/* BOOT SCREEN */
+/* ================= HEADER ================= */
 
-#boot{
-position:fixed;
-width:100%;
-height:100%;
-background:#061629;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-animation:fadeOut 2s ease forwards;
-animation-delay:2s;
-z-index:10;
+.header{
+    background:var(--met-dark);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:3px solid var(--met-blue);
 }
 
-@keyframes fadeOut{
-to{
-opacity:0;
-visibility:hidden;
-}
+.header-left{
+    display:flex;
+    align-items:center;
 }
 
-/* LOGIN */
+.header img{
+    height:60px;
+    margin-right:20px;
+}
 
-#login-container{
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+.header h1{
+    margin:0;
+    font-size:20px;
+    letter-spacing:1px;
+    font-weight:600;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    border-bottom:2px solid transparent;
+}
+
+.nav-links a:hover{
+    border-bottom:2px solid var(--met-blue);
+}
+
+/* ================= LOGIN ================= */
+
+.login-wrapper{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .login-box{
-background:#0d2746;
-padding:40px;
-width:340px;
-border-radius:10px;
-border:1px solid #1f3f63;
-text-align:center;
+    background:white;
+    color:var(--met-navy);
+    padding:40px;
+    width:360px;
+    border-radius:6px;
+    box-shadow:0 5px 25px rgba(0,0,0,0.5);
+}
+
+.login-box h2{
+    text-align:center;
+    margin-bottom:20px;
 }
 
 .login-box input{
-width:100%;
-padding:12px;
-margin:10px 0;
-background:#0b223d;
-border:1px solid #1f3f63;
-color:white;
-border-radius:6px;
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+.login-box input:focus{
+    outline:none;
+    border:1px solid var(--met-blue);
 }
 
 .login-box button{
-width:100%;
-padding:12px;
-background:#1a4d8f;
-border:none;
-color:white;
-border-radius:6px;
-cursor:pointer;
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:var(--met-navy);
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
 }
 
 .login-box button:hover{
-background:#2b6cb0;
+    background:var(--met-blue);
 }
 
-/* DASHBOARD */
+/* ================= DASHBOARD ================= */
 
-.dashboard-body{
-background:#061629;
+.dashboard{
+    padding:50px;
 }
 
-.header{
-background:#0d2746;
-padding:15px;
-text-align:center;
-border-bottom:1px solid #1f3f63;
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:40px;
 }
 
-.layout{
-display:flex;
-height:100vh;
+.card{
+    background:white;
+    color:var(--met-navy);
+    padding:35px;
+    border-radius:6px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
 }
 
-.sidebar{
-width:220px;
-background:#0d2746;
-padding:20px;
-border-right:1px solid #1f3f63;
+.card h3{
+    margin-top:0;
+    border-bottom:2px solid var(--met-blue);
+    padding-bottom:10px;
 }
 
-.sidebar button{
-width:100%;
-padding:12px;
-margin-bottom:12px;
-background:#1a4d8f;
-border:none;
-color:white;
-border-radius:6px;
-cursor:pointer;
+.card a{
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    color:var(--met-blue);
+    font-weight:600;
 }
 
-.sidebar button:hover{
-background:#2b6cb0;
+.card a:hover{
+    text-decoration:underline;
 }
 
-.main{
-flex:1;
-padding:30px;
-background:#0b223d;
+/* ================= FOOTER ================= */
+
+.footer{
+    text-align:center;
+    padding:30px;
+    font-size:12px;
+    opacity:0.6;
 }
