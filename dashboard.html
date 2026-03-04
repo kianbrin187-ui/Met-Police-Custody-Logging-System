@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MET Command Terminal</title>
+<title>Metropolitan Police Service - Command Terminal</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="dashboard-body">
+<body class="dashboard-body" onload="checkLogin(); loadHome();">
 
-<div class="header">
-Metropolitan Police Service | Command Terminal
+<div class="top-header">
+    <div>Metropolitan Police Service | Command Terminal</div>
 </div>
 
-<div class="layout">
+<div class="dashboard-layout">
 
-<div class="sidebar">
-    <button onclick="loadHome()">Dashboard</button>
+    <div class="sidebar">
 
-    <button onclick="loadForm()">Report Form</button>
+        <div class="sidebar-title">Navigation</div>
 
-    <button onclick="window.location.href='https://docs.google.com/spreadsheets/d/1gwpjY4qQ4U59kASsyFLvgkYKMdKCV0MOqqEBOn3cTqQ/edit'">
-        View Reports
-    </button>
+        <button onclick="loadHome()">Dashboard</button>
 
-    <button onclick="window.location.href='https://linktr.ee/PiggyanddoUKCR'">
-        Linktree
-    </button>
+        <button onclick="loadForm()">Custody Arrest Form</button>
 
-    <button onclick="logout()">Logout</button>
-</div>
+        <button onclick="viewReports()">View Reports</button>
 
-<div id="main-content" class="main"></div>
+        <button onclick="window.open('https://linktr.ee/PiggyanddoUKCR','_blank')">
+            Useful Links
+        </button>
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
+
+    </div>
+
+    <div id="main-content" class="main-content"></div>
 
 </div>
 
