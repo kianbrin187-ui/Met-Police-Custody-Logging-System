@@ -1,9 +1,14 @@
-/* Boot timing */
-setTimeout(function(){
-document.getElementById("boot").style.display="none";
-},2000);
+/* BOOT SCREEN */
+window.addEventListener("load", function () {
+    const boot = document.getElementById("boot-screen");
+    if (boot) {
+        setTimeout(function () {
+            boot.style.display = "none";
+        }, 2000);
+    }
+});
 
-/* USER DATABASE */
+/* USERS */
 const users = {
     "c.bradford": "admin123",
     "a.kalsi": "Ak123",
@@ -12,57 +17,72 @@ const users = {
     "b.henderson": "Bradyn123",
     "j.anderson": "Jacob123",
     "s.rob": "Rob123",
-     "t.evans": "Terry123"
+    "t.evans": "Terry123"
 };
 
-/* LOGIN FUNCTION */
+/* LOGIN */
+function login() {
 
-function login(){
+    let user = document.getElementById("username").value.trim();
+    let pass = document.getElementById("password").value.trim();
 
-let user = document.getElementById("username").value.trim();
-let pass = document.getElementById("password").value.trim();
-
-if(users[user] && users[user] === pass){
-
-localStorage.setItem("currentUser", user);
-window.location.href="dashboard.html";
-
-}else{
-
-document.getElementById("error").innerText="Invalid Username or Password";
-
+    if (users[user] && users[user] === pass) {
+        localStorage.setItem("currentUser", user);
+        window.location.href = "dashboard.html";
+    } else {
+        document.getElementById("error").innerText = "Invalid Username or Password.";
+    }
 }
 
+/* PROTECT DASHBOARD */
+function checkLogin() {
+    if (!localStorage.getItem("currentUser")) {
+        window.location.href = "index.html";
+    }
 }
 
-/* DASHBOARD */
+/* HOME */
+function loadHome() {
 
-function loadHome(){
+    let user = localStorage.getItem("currentUser");
 
-let user = localStorage.getItem("currentUser");
-
-if(!user){
-window.location.href="index.html";
-return;
+    document.getElementById("main-content").innerHTML = `
+        <h2>Welcome, ${user}</h2>
+        <p><strong>System Status:</strong> Secure</p>
+        <p><strong>Access Level:</strong> Command</p>
+        <hr>
+        <p>All activity is logged.</p>
+    `;
 }
 
-document.getElementById("main-content").innerHTML=
-"<h2>Hello " + user + "</h2><p>System Status: Secure</p>";
+/* LOAD GOOGLE FORM */
+function loadForm() {
+
+    document.getElementById("main-content").innerHTML = `
+        <iframe class="form-frame"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSc0nEq5miwEXDaBhYyFhvJC1miMQuS8uXL7X6CX0c7yisyTlg/viewform?embedded=true">
+        </iframe>
+    `;
 }
 
-function loadForm(){
+/* REPORTS PASSWORD CHECK */
+function viewReports() {
 
-document.getElementById("main-content").innerHTML=`
-<iframe 
-width="100%" 
-height="80%" 
-style="border:none;border-radius:8px;background:white;"
-src="https://docs.google.com/forms/d/e/1FAIpQLSc0nEq5miwEXDaBhYyFhvJC1miMQuS8uXL7X6CX0c7yisyTlg/viewform?embedded=true">
-</iframe>
-`;
+    let currentUser = localStorage.getItem("currentUser");
+    let entered = prompt("Re-enter your password:");
+
+    if (users[currentUser] === entered) {
+        window.open(
+            "https://docs.google.com/spreadsheets/d/1gwpjY4qQ4U59kASsyFLvgkYKMdKCV0MOqqEBOn3cTqQ/edit",
+            "_blank"
+        );
+    } else {
+        alert("Access Denied.");
+    }
 }
 
-function logout(){
-localStorage.removeItem("currentUser");
-window.location.href="index.html";
+/* LOGOUT */
+function logout() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "index.html";
 }
