@@ -42,26 +42,32 @@ function checkLogin() {
 }
 
 /* HOME */
-function loadHome() {
+function loadDashboard() {
 
     let user = localStorage.getItem("currentUser");
 
     document.getElementById("main-content").innerHTML = `
-        <h2>Welcome, ${user}</h2>
-        <p><strong>System Status:</strong> Secure</p>
-        <p><strong>Access Level:</strong> Command</p>
-        <hr>
-        <p>All activity is logged.</p>
-    `;
-}
+        <div class="dashboard-head">
+            <h2>Welcome, ${user}</h2>
+            <p><strong>System Status:</strong> Secure</p>
+            <p><strong>Access Level:</strong> Command</p>
+            <hr>
+            <p>All activity is logged.</p>
+        </div>
 
-/* LOAD GOOGLE FORM */
-function loadForm() {
+        <section class="embedded-form-panel">
+            <div class="panel-header">
+                <h3>Custody Arrest Form</h3>
+                <p>Complete and submit the form directly from the command terminal.</p>
+            </div>
 
-    document.getElementById("main-content").innerHTML = `
-        <iframe class="form-frame"
-        src="https://docs.google.com/forms/d/e/1FAIpQLSc0nEq5miwEXDaBhYyFhvJC1miMQuS8uXL7X6CX0c7yisyTlg/viewform?embedded=true">
-        </iframe>
+            <iframe
+                class="form-frame"
+                title="Custody Arrest Form"
+                src="https://docs.google.com/forms/d/e/1FAIpQLSc0nEq5miwEXDaBhYyFhvJC1miMQuS8uXL7X6CX0c7yisyTlg/viewform?embedded=true"
+                loading="lazy">
+            </iframe>
+        </section>
     `;
 }
 
