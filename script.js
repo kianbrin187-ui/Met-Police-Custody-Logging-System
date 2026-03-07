@@ -23,14 +23,14 @@ const users = {
 
 /* USER RANKS */
 const userRanks = {
-    "c.bradford": "INSPECTOR",
-    "a.kalsi": "CONSTABLE",
-    "l.phillips": "SERGEANT",
-    "h.oliver": "CONSTABLE",
-    "b.henderson": "CONSTABLE",
-    "j.anderson": "CONSTABLE",
-    "s.rob": "CONSTABLE",
-    "t.evans": "CONSTABLE"
+    "c.bradford": "Superintendent",
+    "a.kalsi": "Chief Inspector",
+    "l.phillips": "Sergeant",
+    "h.oliver": "Superintendent",
+    "b.henderson": "Deputy Assistant Commisioner",
+    "j.anderson": "Commander",
+    "s.rob": "Superintendent",
+    "t.evans": "Deputy Commssioner"
 };
 
 /* LOGIN */
