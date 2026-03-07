@@ -17,6 +17,7 @@ const users = {
     "b.henderson": "Bradyn123",
     "j.anderson": "Jacob123",
     "s.rob": "Rob123",
+     "B.nelson": "Anders123",
     "t.evans": "Terry123"
 };
 
