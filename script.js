@@ -21,6 +21,18 @@ const users = {
     "t.evans": "Terry123"
 };
 
+/* USER RANKS */
+const userRanks = {
+    "c.bradford": "INSPECTOR",
+    "a.kalsi": "CONSTABLE",
+    "l.phillips": "SERGEANT",
+    "h.oliver": "CONSTABLE",
+    "b.henderson": "CONSTABLE",
+    "j.anderson": "CONSTABLE",
+    "s.rob": "CONSTABLE",
+    "t.evans": "CONSTABLE"
+};
+
 /* LOGIN */
 function login() {
 
@@ -46,6 +58,7 @@ function checkLogin() {
 function loadDashboard() {
 
     let user = localStorage.getItem("currentUser");
+    let userRank = userRanks[user] || "OFFICER";
 
     document.getElementById("main-content").innerHTML = `
         <div class="dashboard-head">
