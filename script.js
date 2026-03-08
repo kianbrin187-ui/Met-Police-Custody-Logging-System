@@ -64,6 +64,7 @@ function loadDashboard() {
         <div class="dashboard-head">
             <h2>Welcome, ${user}</h2>
             <p><strong>System Status:</strong> Secure</p>
+            <p><strong>Rank:</strong> ${userRank}</p>
             <p><strong>Access Level:</strong> Command</p>
             <hr>
             <p>All activity is logged.</p>
