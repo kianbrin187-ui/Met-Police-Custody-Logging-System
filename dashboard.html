@@ -5,10 +5,22 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="dashboard-body" onload="checkLogin(); loadHome();">
+<body class="dashboard-body" onload="checkLogin(); initTheme(); loadDashboard();">
 
 <div class="top-header">
-    <div>Metropolitan Police Service | Command Terminal</div>
+    <div class="header-brand">
+        <img
+            class="header-logo"
+            src="https://image2url.com/r2/default/images/1772982370001-4c5dd800-ec0f-4784-9b88-33df6766ce7c.jpg"
+            alt="Metropolitan Police Service logo"
+            referrerpolicy="no-referrer"
+        >
+        <div class="header-text">
+            <div class="header-title">Metropolitan Police Service</div>
+            <div class="header-subtitle">Custody Command Terminal</div>
+        </div>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle-btn">Switch to Dark Mode</button>
 </div>
 
 <div class="dashboard-layout">
@@ -17,9 +29,7 @@
 
         <div class="sidebar-title">Navigation</div>
 
-        <button onclick="loadHome()">Dashboard</button>
-
-        <button onclick="loadForm()">Custody Arrest Form</button>
+        <button onclick="loadDashboard()">Dashboard</button>
 
         <button onclick="viewReports()">View Reports</button>
 
