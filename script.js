@@ -33,6 +33,32 @@ const userRanks = {
     "t.evans": "Deputy Commssioner"
 };
 
+/* THEME */
+function initTheme() {
+    let savedTheme = localStorage.getItem("theme") || "light";
+    document.body.setAttribute("data-theme", savedTheme);
+    updateThemeButton(savedTheme);
+}
+
+function toggleTheme() {
+    let currentTheme = document.body.getAttribute("data-theme") || "light";
+    let nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+    document.body.setAttribute("data-theme", nextTheme);
+    localStorage.setItem("theme", nextTheme);
+    updateThemeButton(nextTheme);
+}
+
+function updateThemeButton(theme) {
+    let toggleButton = document.getElementById("theme-toggle-btn");
+
+    if (toggleButton) {
+        toggleButton.innerText = theme === "dark"
+            ? "Switch to Light Mode"
+            : "Switch to Dark Mode";
+    }
+}
+
 /* LOGIN */
 function login() {
 
@@ -58,16 +84,17 @@ function checkLogin() {
 function loadDashboard() {
 
     let user = localStorage.getItem("currentUser");
-    let userRank = userRanks[user] || "OFFICER";
+    let userRank = userRanks[user] || "Officer";
 
     document.getElementById("main-content").innerHTML = `
         <div class="dashboard-head">
             <h2>Welcome, ${user}</h2>
-            <p><strong>System Status:</strong> Secure</p>
-            <p><strong>Rank:</strong> ${userRank}</p>
-            <p><strong>Access Level:</strong> Command</p>
+            <div class="rank-row">
+                <p><strong>System Status:</strong> Secure</p>
+                <p><strong>Rank:</strong> <span class="rank-pill">${userRank}</span></p>
+            </div>
             <hr>
-            <p>All activity is logged.</p>
+            <p>All activity is logged and monitored.</p>
         </div>
 
         <section class="embedded-form-panel">
