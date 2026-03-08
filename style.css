@@ -58,18 +58,49 @@ body {
     z-index: 999;
 }
 
+.boot-logo {
+    width: 84px;
+    height: 84px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.login-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .login-card {
     background: white;
     padding: 40px;
     width: 400px;
     border-top: 6px solid #002b5c;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.login-logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
+
+.login-sub {
+    color: #475569;
+    margin-top: -4px;
+    margin-bottom: 16px;
 }
 
 .login-card input {
     width: 100%;
     padding: 12px;
     margin-top: 10px;
+    box-sizing: border-box;
 }
 
 .login-card button {
@@ -88,7 +119,7 @@ body {
 }
 
 .error {
-    color: red;
+    color: #b91c1c;
     margin-top: 10px;
 }
 

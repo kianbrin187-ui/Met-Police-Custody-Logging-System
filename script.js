@@ -6,6 +6,19 @@ window.addEventListener("load", function () {
             boot.style.display = "none";
         }, 2000);
     }
+
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    if (usernameInput && passwordInput) {
+        [usernameInput, passwordInput].forEach(function (input) {
+            input.addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                    login();
+                }
+            });
+        });
+    }
 });
 
 /* USERS */
