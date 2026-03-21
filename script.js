@@ -39,10 +39,7 @@ const userRanks = {
     "c.bradford": "Superintendent",
     "a.kalsi": "Chief Inspector",
     "l.phillips": "Sergeant",
-    "h.oliver": "Superintendent",
-    "b.henderson": "Deputy Assistant Commisioner",
-    "j.anderson": "Commander",
-    "s.rob": "Superintendent",
+    "h.oliver": "Chief Superintendent",
     "t.evans": "Deputy Commssioner"
 };
 
