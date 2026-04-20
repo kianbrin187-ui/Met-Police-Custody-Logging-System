@@ -24,14 +24,13 @@ window.addEventListener("load", function () {
 /* USERS */
 const users = {
     "c.bradford": "admin123",
-    "a.kalsi": "Ak123",
+    "a.kalsi": "Akalsi",
     "l.phillips": "Lewis123",
     "h.oliver": "Oliver123",
-    "b.henderson": "Bradyn123",
-    "j.anderson": "Jacob123",
+        "t.hanson": "Toby123",
+    "d.lloyd": "Wolfie123",
+    "s.werth": "Sam123",
     "s.rob": "Rob123",
-     "b.nelson": "Anders123",
-    "t.evans": "Terry123"
 };
 
 /* USER RANKS */
